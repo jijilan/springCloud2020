@@ -2,16 +2,12 @@ package cn.jijl.springcloud.controller;
 
 import cn.jijl.springcloud.entities.CommonResult;
 import cn.jijl.springcloud.entities.Payment;
+
 import cn.jijl.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @Author jijl
@@ -24,11 +20,11 @@ public class PaymentController {
     @Resource
     private PaymentService paymentService;
 
-    @Value("${server.port}")
-    private String serverPort;
+//    @Value("${server.port}")
+//    private String serverPort;
 
-    @Resource
-    private DiscoveryClient discoveryClient;
+//    @Resource
+//    private DiscoveryClient discoveryClient;
 
     /**
      * @return cn.jijl.springcloud.entities.CommonResult
@@ -38,12 +34,12 @@ public class PaymentController {
      * @Param [payment]
      **/
     @PostMapping(value = "/payment/create")
-    public CommonResult create(Payment payment) {
+    public CommonResult create(@RequestBody Payment payment) {
         int result = paymentService.create(payment);
         log.info("****插入结果:" + result);
 
         if (result > 0) {
-            return new CommonResult(200, "插入数据库成功,serverPort: " + serverPort, result);
+            return new CommonResult(200, "插入数据库成功,serverPort: ", result);
         } else {
             return new CommonResult(444, "插入数据库失败", null);
         }
@@ -62,7 +58,7 @@ public class PaymentController {
         log.info("**** 查询结果:" + payment + "1");
 
         if (payment != null) {
-            return new CommonResult(200, "查询成功,serverPort: " + serverPort, payment);
+            return new CommonResult(200, "查询成功,serverPort: ", payment);
         } else {
             return new CommonResult(444, "没有对应记录，查询ID: " + id, null);
         }
