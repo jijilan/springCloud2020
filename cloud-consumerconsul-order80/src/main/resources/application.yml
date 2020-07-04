@@ -1,10 +1,10 @@
 server:
-  port: 8006
+  port: 80
 
 spring:
   application:
-    name: consul-provider-payment
-#consul注册中心地址
+    name: cloud-consumer-order
+  #consul注册中心地址
   cloud:
     consul:
       host: 47.106.169.138
