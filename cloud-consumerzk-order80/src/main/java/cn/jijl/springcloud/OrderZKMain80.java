@@ -1,0 +1,18 @@
+package cn.jijl.springcloud;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+
+/**
+ * @Author jijl
+ * @Date 15:37 2020/7/4
+ **/
+@SpringBootApplication
+@EnableDiscoveryClient
+public class OrderZKMain80 {
+
+    public static void main(String[] args) {
+        SpringApplication.run(OrderZKMain80.class, args);
+    }
+}
