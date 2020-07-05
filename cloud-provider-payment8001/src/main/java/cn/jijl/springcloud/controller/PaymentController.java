@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author jijl
@@ -94,17 +95,17 @@ public class PaymentController {
     public String getPaymentLB() {
         return serverPort;
     }
-//
-//    @GetMapping(value = "/payment/feign/timeout")
-//    public String paymentFeignTimeout() {
-//        try {
-//            TimeUnit.SECONDS.sleep(3);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            return serverPort;
-//        }
-//    }
+
+    @GetMapping(value = "/payment/feign/timeout")
+    public String paymentFeignTimeout() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return serverPort;
+        }
+    }
 //
 //    @GetMapping(value = "/payment/zipkin")
 //    public String paymentZipkin() {
