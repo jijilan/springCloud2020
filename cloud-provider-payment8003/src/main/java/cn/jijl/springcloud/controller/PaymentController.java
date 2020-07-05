@@ -62,12 +62,12 @@ public class PaymentController {
         log.info("**** 查询结果:" + payment + "1");
 
         if (payment != null) {
-            return new CommonResult(200, "查询成功,serverPort: "+ serverPort, payment);
+            return new CommonResult(200, "查询成功,serverPort: " + serverPort, payment);
         } else {
             return new CommonResult(444, "没有对应记录，查询ID: " + id, null);
         }
     }
-//
+
     @GetMapping(value = "/payment/discovery")
     public Object discovery() {
         List<String> services = discoveryClient.getServices();
@@ -84,7 +84,7 @@ public class PaymentController {
 
         return this.discoveryClient;
     }
-//
+
     @GetMapping(value = "/payment/lb")
     public String getPaymentLB() {
         return serverPort;
